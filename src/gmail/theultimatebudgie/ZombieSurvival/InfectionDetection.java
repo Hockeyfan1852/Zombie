@@ -4,16 +4,15 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 public class InfectionDetection {
 	ZombieCore plugin;
-	
+
 	public InfectionDetection (ZombieCore plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	public void MainTask() {
 		plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
 			@Override
@@ -29,6 +28,7 @@ public class InfectionDetection {
 									if (plugin.playerContainer.get(infected.getName()).state.equals("human")) {
 										plugin.getServer().broadcastMessage(p.getName() + " &c ate " + infected.getName());
 										plugin.getServer().broadcastMessage(p.getName() + " &c murdered " + infected.getName());
+										ZombieCore.stats.get(p.getName()).kills++;
 										plugin.playerContainer.get(infected.getName()).setInfected();
 									}
 								}
@@ -39,5 +39,5 @@ public class InfectionDetection {
 			}
 		},0,5);
 	}
-	
+
 }
