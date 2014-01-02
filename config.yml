@@ -1,0 +1,6 @@
+BreakTime: 15
+VoteTime: 30
+RisingTime: 3
+Worlds:
+  - Map1
+  - Map2

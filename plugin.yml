@@ -1,0 +1,21 @@
+name: Infected
+main: gmail.theultimatebudgie.ZombieSurvival.ZombieCore
+version: 1
+commands:
+  starttimer:
+    description: lol.
+    usage: /<lol>
+    permission: infected.starttimer
+  infectme:
+    description: lolz
+    usage: /<lolz>
+    permission: infected.infectme
+  endround:
+    description: loool
+    permission: infected.endround
+  saveworld:
+    description: saves world
+    permission: infected.saveworld
+  ref:
+    description: referreeing like bosses
+    permission: infected.ref
