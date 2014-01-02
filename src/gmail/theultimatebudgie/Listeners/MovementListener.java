@@ -7,9 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.util.Vector;
 
 public class MovementListener implements Listener {
 	ZombieCore plugin;
@@ -19,6 +17,7 @@ public class MovementListener implements Listener {
 	}
 	
 	//Checks to see if someone is walking into the invisible borders. If they do... bedrock in the face!
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onPlayerMove (final PlayerMoveEvent event) {
 		final Player p = event.getPlayer();
