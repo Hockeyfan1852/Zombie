@@ -19,3 +19,6 @@ commands:
   ref:
     description: referreeing like bosses
     permission: infected.ref
+  stats:
+    description: Showing stats
+    permission: infected.stats
