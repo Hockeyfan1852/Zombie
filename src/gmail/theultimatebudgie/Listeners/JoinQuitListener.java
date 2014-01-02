@@ -1,9 +1,9 @@
 package gmail.theultimatebudgie.Listeners;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -66,7 +66,7 @@ public class JoinQuitListener implements Listener {
 	public void givePermanentItems(Player player) {
 		player.getInventory().clear();
 		
-		ItemStack blockPicker = new ItemStack(130);
+		ItemStack blockPicker = new ItemStack(Material.ENDER_CHEST);
 		ItemMeta blockPickerMeta = blockPicker.getItemMeta();
 		blockPickerMeta.setDisplayName(ChatColor.AQUA + "Block Picker");
 		blockPickerMeta.setLore(new ArrayList<String>());

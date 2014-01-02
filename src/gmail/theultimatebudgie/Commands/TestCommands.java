@@ -22,15 +22,17 @@ public class TestCommands implements CommandExecutor {
 			return true;
 		}
 		
-		else if (cmd.getName().equalsIgnoreCase("endround")){
+		if (cmd.getName().equalsIgnoreCase("endround")){
 			plugin.endRound();
+			return true;
 		}
 		
-		else if (cmd.getName().equalsIgnoreCase("saveworld")){
+		if (cmd.getName().equalsIgnoreCase("saveworld")){
 			plugin.currentWorld.save();
+			return true;
 		}
 		
-		else if (cmd.getName().equalsIgnoreCase("ref")){
+		if (cmd.getName().equalsIgnoreCase("ref")){
 			Player player = (Player) sender;
 			if (plugin.playerContainer.get(player.getName()).getState().equals("human") || plugin.playerContainer.get(player.getName()).getState().equals("infected")) {
 				plugin.playerContainer.get(player.getName()).setRef();
@@ -41,12 +43,20 @@ public class TestCommands implements CommandExecutor {
 					plugin.playerContainer.get(player.getName()).setHuman();
 				}
 			}
+			return true;
 		}
 		
-		else if (cmd.getName().equalsIgnoreCase("starteverything")){
+		if (cmd.getName().equalsIgnoreCase("starteverything")){
 			plugin.startTimer();
+			return true;
 		}
 		
-		return true;
+		if(cmd.getName().equalsIgnoreCase("stats")){
+			for(String string:plugin.showStats(sender.getName())){
+				sender.sendMessage(string);
+			}
+			return true;
+		}
+		return false;
 	}
 }
