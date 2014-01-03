@@ -19,6 +19,11 @@ public class Stats {
 		}
 		this.name = name;
 	}
+	public Stats(String playerName) {
+		kills = 0;
+		wins = 0;
+		name = playerName;
+	}
 	public void save(ConfigurationSection statsC) {
 		if(!statsC.contains(name)){
 			statsC.createSection(name);
