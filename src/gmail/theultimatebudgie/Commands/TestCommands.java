@@ -52,7 +52,8 @@ public class TestCommands implements CommandExecutor {
 		}
 		
 		if(cmd.getName().equalsIgnoreCase("stats")){
-			for(String string:plugin.showStats(sender.getName())){
+			List<String> messages = plugin.showStats(sender.getName());
+			for(String string:messages){
 				sender.sendMessage(string);
 			}
 			return true;
