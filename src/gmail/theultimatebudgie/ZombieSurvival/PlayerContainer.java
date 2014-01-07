@@ -75,7 +75,7 @@ public class PlayerContainer {
 
 		player.setGameMode(GameMode.SURVIVAL);
 
-		if (this.state.equals("ref")){
+		if (this.state == "ref"){
 		}
 
 		this.state = "human";
