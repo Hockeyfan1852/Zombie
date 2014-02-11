@@ -158,6 +158,7 @@ public class ZombieCore extends JavaPlugin {
 	}
 
 	public void createInstances() {
+		infectionDetection = new InfectionDetection(this);
 
 		roundTimer = new RoundTimer(this);
 
