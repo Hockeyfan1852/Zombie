@@ -21,7 +21,6 @@ import gmail.theultimatebudgie.ZombieSurvival.ZombieCore;
 public class PlayerListener implements Listener {
 	ZombieCore plugin;
 	public List<String> cooldown = new ArrayList<String>();
-
 	public PlayerListener (ZombieCore plugin) {
 		this.plugin = plugin;
 	}
@@ -84,7 +83,12 @@ public class PlayerListener implements Listener {
 			}else{
 				cooldown.add(event.getPlayer().getName());
 				final String name = event.getPlayer().getName();
-				plugin.getServer().getPluginManager().callEvent(new BlockBreakEvent(event.getClickedBlock(),event.getPlayer()));
+				BlockBreakEvent blockEvent = new BlockBreakEvent(event.getClickedBlock(),event.getPlayer());
+				plugin.getServer().getPluginManager().callEvent(blockEvent);
+				if(!blockEvent.isCancelled()){
+					blockEvent.getBlock().breakNaturally(event.getPlayer().getItemInHand());
+				}
+				//event.getClickedBlock().breakNaturally(event.getPlayer().getItemInHand());
 				plugin.getServer().getScheduler().runTaskLater(plugin, new BukkitRunnable(){
 					@Override
 					public void run() {
