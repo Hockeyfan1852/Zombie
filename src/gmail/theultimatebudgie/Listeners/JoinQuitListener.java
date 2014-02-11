@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import gmail.theultimatebudgie.ZombieSurvival.PlayerContainer;
+import gmail.theultimatebudgie.ZombieSurvival.Stats;
 import gmail.theultimatebudgie.ZombieSurvival.ZombieCore;
 
 public class JoinQuitListener implements Listener {
@@ -27,7 +28,9 @@ public class JoinQuitListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		String playerName = player.getName();
-		
+		if(!ZombieCore.stats.containsKey(playerName)){
+			ZombieCore.stats.put(playerName, new Stats(playerName));
+		}
 		/*//I take this back
 		if (event.getPlayer().getName().equals("UltimateBudgie")){
 			plugin.startTimer();
