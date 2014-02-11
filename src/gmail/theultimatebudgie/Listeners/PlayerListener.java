@@ -3,10 +3,8 @@ package gmail.theultimatebudgie.Listeners;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -23,8 +21,6 @@ import gmail.theultimatebudgie.ZombieSurvival.ZombieCore;
 public class PlayerListener implements Listener {
 	ZombieCore plugin;
 	public List<String> cooldown = new ArrayList<String>();
-	private List<Location> blocks = new ArrayList<Location>();
-
 	public PlayerListener (ZombieCore plugin) {
 		this.plugin = plugin;
 	}
@@ -87,8 +83,11 @@ public class PlayerListener implements Listener {
 			}else{
 				cooldown.add(event.getPlayer().getName());
 				final String name = event.getPlayer().getName();
-				plugin.getServer().getPluginManager().callEvent(new BlockBreakEvent(event.getClickedBlock(),event.getPlayer()));
-				blocks.add(event.getClickedBlock().getLocation());
+				BlockBreakEvent event1 = new BlockBreakEvent(event.getClickedBlock(),event.getPlayer());
+				plugin.getServer().getPluginManager().callEvent(event1);
+				if(!event.isCancelled()){
+					event1.getBlock().breakNaturally(event.getPlayer().getItemInHand());
+				}
 				//event.getClickedBlock().breakNaturally(event.getPlayer().getItemInHand());
 				plugin.getServer().getScheduler().runTaskLater(plugin, new BukkitRunnable(){
 					@Override
@@ -96,15 +95,6 @@ public class PlayerListener implements Listener {
 						cooldown.remove(name);
 					}
 				}, 3);
-			}
-		}
-	}
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBreak(BlockBreakEvent event){
-		if(blocks.contains(event.getBlock().getLocation())){
-			blocks.remove(event.getBlock().getLocation());
-			if(!event.isCancelled()){
-				event.getBlock().breakNaturally(event.getPlayer().getItemInHand());
 			}
 		}
 	}
