@@ -14,7 +14,7 @@ import gmail.theultimatebudgie.ZombieSurvival.ZombieCore;
 
 public class BlockListener implements Listener {
 	ZombieCore plugin;
-	public final static List<Material> denied = Arrays.asList(new Material[]{Material.REDSTONE});
+	public final static List<Material> denied = Arrays.asList(new Material[]{Material.REDSTONE,Material.BEDROCK,Material.CARPET,Material.CHEST});
 	
 	public BlockListener (ZombieCore plugin) {
 		this.plugin = plugin;
