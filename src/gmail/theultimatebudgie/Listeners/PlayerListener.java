@@ -102,6 +102,7 @@ public class PlayerListener implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onBreak(BlockBreakEvent event){
 		if(blocks.contains(event.getBlock().getLocation())){
+			blocks.remove(event.getBlock().getLocation());
 			if(!event.isCancelled()){
 				event.getBlock().breakNaturally(event.getPlayer().getItemInHand());
 			}
