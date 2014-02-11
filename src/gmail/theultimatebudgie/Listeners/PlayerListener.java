@@ -83,10 +83,10 @@ public class PlayerListener implements Listener {
 			}else{
 				cooldown.add(event.getPlayer().getName());
 				final String name = event.getPlayer().getName();
-				BlockBreakEvent event1 = new BlockBreakEvent(event.getClickedBlock(),event.getPlayer());
-				plugin.getServer().getPluginManager().callEvent(event1);
-				if(!event.isCancelled()){
-					event1.getBlock().breakNaturally(event.getPlayer().getItemInHand());
+				BlockBreakEvent blockEvent = new BlockBreakEvent(event.getClickedBlock(),event.getPlayer());
+				plugin.getServer().getPluginManager().callEvent(blockEvent);
+				if(!blockEvent.isCancelled()){
+					blockEvent.getBlock().breakNaturally(event.getPlayer().getItemInHand());
 				}
 				//event.getClickedBlock().breakNaturally(event.getPlayer().getItemInHand());
 				plugin.getServer().getScheduler().runTaskLater(plugin, new BukkitRunnable(){
