@@ -21,7 +21,7 @@ import gmail.theultimatebudgie.ZombieSurvival.ZombieCore;
 
 public class PlayerListener implements Listener {
 	ZombieCore plugin;
-	public final static int delay = 10;
+	public final static int delay = 4;
 	public List<String> cooldown = new ArrayList<String>();
 	public PlayerListener (ZombieCore plugin) {
 		this.plugin = plugin;
